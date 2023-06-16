@@ -4,8 +4,12 @@ import Filter from 'components/Filter/Filter';
 import ContactList from 'components/ContactList/ContactList';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchContacts } from 'redux/operations';
-import { getContacts, getError, getIsLoading } from 'redux/selectors';
+import { fetchContacts } from 'redux/contactsAndFilter/operations';
+import {
+  getContacts,
+  getError,
+  getIsLoading,
+} from 'redux/contactsAndFilter/selectors';
 
 export default function Contacts() {
   const dispatch = useDispatch();

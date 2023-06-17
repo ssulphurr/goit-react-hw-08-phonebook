@@ -1,16 +1,17 @@
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from './SharedLayout/SharedLayout';
-import Home from 'pages/Home';
-import Contacts from 'pages/Contacts';
-import Register from 'pages/Register';
-import Login from 'pages/Login';
+import Container from './Container/Container';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 import { refreshUser } from 'redux/auth/operations';
 import { getIsRefreshing } from 'redux/auth/selectors';
-import Container from './Container/Container';
+
+const Home = lazy(() => import('../pages/Home'));
+const Contacts = lazy(() => import('../pages/Contacts'));
+const Register = lazy(() => import('../pages/Register'));
+const Login = lazy(() => import('../pages/Login'));
 
 export function App() {
   const dispatch = useDispatch();

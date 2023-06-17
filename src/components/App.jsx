@@ -5,9 +5,25 @@ import Register from 'pages/Register';
 import Login from 'pages/Login';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { refreshUser } from 'redux/auth/operations';
+import { getIsRefreshing } from 'redux/auth/selectors';
+import Container from './Container/Container';
 
 export function App() {
-  return (
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
+  const isRefreshing = useSelector(getIsRefreshing);
+
+  return isRefreshing ? (
+    <Container>
+      <h2>Refreshing user...</h2>
+    </Container>
+  ) : (
     <Routes>
       <Route path="/" element={<SharedLayout />}>
         <Route

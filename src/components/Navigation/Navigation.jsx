@@ -21,16 +21,17 @@ export default function Navigation() {
   return (
     <nav className={css.nav_bar}>
       <div className={css.nav_linkWrapper}>
+        <StyledLink to="/">Home</StyledLink>
         {isLoggedIn ? (
           <>
             <StyledLink to="/contacts">ContactBook</StyledLink>
             <UserMenu />
           </>
         ) : (
-          <>
+          <div className={css.public_links}>
             <StyledLink to="/register">Register</StyledLink>
             <StyledLink to="/login">Log in</StyledLink>
-          </>
+          </div>
         )}
       </div>
     </nav>
